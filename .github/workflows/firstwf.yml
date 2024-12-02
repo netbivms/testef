@@ -11,5 +11,11 @@ jobs:
     steps:
       - run: echo "Hello World!"
       - run: tree
+        name: Tree before Checkout 
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+      - name: Tree after Checkout 
+        run: tree
+      - run: cat 00README.md
 
     
