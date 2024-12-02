@@ -1,19 +1,35 @@
-name: My first Workflow
+name: GitHub Actions Demo
 
 
 on:
   push:
+    branches:
+    - main
   workflow_dispatch:
+  schedule:
+  - cron: "15 6 * * *"
 
 jobs:
-  helloworld:
+  build:
     runs-on: ubuntu-latest
     steps:
+      - run: echo "Triggered by ${{github.event_name}}"
+      - run: echo "Referencing branch ${{ github.ref }}"
+      
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+        with:
+          ref: 'main'
+
+      - name: List files in the repository
+        run: |
+          echo "In the repository ${{ github.repository }} with files:"
+          tree
+      
       - run: echo "Hello World!"
       - run: tree
         name: Tree before Checkout 
-      - name: Checkout
-        uses: actions/checkout@v4.2.2
+
       - name: Tree after Checkout 
         run: tree
       - run: cat README.md
