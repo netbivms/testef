@@ -3,23 +3,28 @@ name: GitHub Actions Demo
 
 on:
   push:
-    branches:
-    - main
+    branches: [ main ]
+    paths-ignore: [ .github/** ]
+
+  pull_request:
+    branches: [ main ]
+  
   workflow_dispatch:
+  
+  
   schedule:
-  - cron: "15 6 * * *"
+  - cron: '15 6 * * 0'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Triggered by ${{github.event_name}}"
-      - run: echo "Referencing branch ${{ github.ref }}"
+      - run: |
+          echo "Triggered by ${{github.event_name}}"
+          echo "Referencing branch ${{ github.ref }}"
       
       - name: Checkout
         uses: actions/checkout@v4.2.2
-        with:
-          ref: 'main'
 
       - name: List files in the repository
         run: |
