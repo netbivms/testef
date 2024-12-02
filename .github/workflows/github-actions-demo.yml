@@ -31,12 +31,12 @@ jobs:
           echo "In the repository ${{ github.repository }} with files:"
           tree
       
-      - run: echo "Hello World!"
-      - run: tree
-        name: Tree before Checkout 
+      #- run: echo "Hello World!"
+      #- run: tree
+      #  name: Tree before Checkout 
 
-      - name: Tree after Checkout 
-        run: tree
-      - run: cat README.md
+      #- name: Tree after Checkout 
+      #  run: tree
+      #- run: cat README.md
 
     
