@@ -2,7 +2,7 @@ name: CI Build for Docker Action
 on:
   push:
     branches: [ main ]
-    paths: [ testf/** ]
+    paths: [ testef/** ]
   workflow_dispatch:
 
 jobs:
@@ -14,7 +14,7 @@ jobs:
 
       - name: Run my own container action
         id: hello-action
-        uses: ./testf
+        uses: ./testef
         with:
           who-to-greet: '@netbivms'
 
